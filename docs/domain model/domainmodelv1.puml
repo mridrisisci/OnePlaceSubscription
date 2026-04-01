@@ -1,0 +1,36 @@
+
+@startuml
+Title domainmodel - one place subscription
+
+hide circle
+hide methods
+
+entity User {
+    +name
+    +email
+    + phone
+    + address
+    + amountOfSubscriptions
+}
+
+entity Subscription {
+    +startDate
+    +endDate
+    +status
+}
+
+
+
+entity Transaction {
+    +amount
+    + dateOfPayment
+    +status
+}
+entity Category {
+    +name
+}
+
+User "1" *-- "*" Subscription : has
+Subscription "1" *-- "*" Transaction : has
+Subscription "1" *-- "1" Category : has
+@enduml

@@ -152,9 +152,8 @@ See [LICENSE](LICENSE) for full terms.
 
 ## Author
 
-**Idris**
-AP Graduate in Computer Science — Cphbusiness, 2026
-SOC Analyst Intern @ AevenGroup
+**Idris Isci**
+AP Graduate in Computer Science — EK, 2026
 
 GitHub: [@mridrisisci](https://github.com/mridrisisci)
 

@@ -1,0 +1,32 @@
+@startuml
+|User|
+start
+:Visit registration page;
+:Fill in username, email, password;
+:Submit form;
+
+|Backend|
+:Receive registration request;
+if (Are all fields valid?) then (no)
+  |User|
+  :See validation error;
+  :Correct input;
+  :Resubmit form;
+  |Backend|
+  :Receive registration request;
+endif
+
+if (Does email already exist?) then (yes)
+  |User|
+  :See "email already in use" error;
+  stop
+endif
+
+:Hash password (BCrypt);
+:Save User to database;
+:Return success response;
+
+|User|
+:Redirected to login page;
+stop
+@enduml

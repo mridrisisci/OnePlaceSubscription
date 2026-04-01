@@ -1,0 +1,14 @@
+
+US 1 : create user
+
+US 2 : view all subscriptions
+
+as a user
+i want to log into my dashboard and have a clear overview of all my subscriptions and their status
+so that I can easily cancel it
+given that I have an account and I am logged in and my subscriptions have been fetched via the API/DB
+when i manage a subscription e.g cancel
+then the subscription status should be updated in the dashboard and the API/DB
+
+US 3 : create subscription manually
+

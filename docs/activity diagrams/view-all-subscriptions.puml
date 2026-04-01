@@ -1,0 +1,57 @@
+@startuml
+|User|
+start
+:Open dashboard;
+
+|Frontend|
+:Send GET /subscriptions request;
+:Attach JWT token in header;
+
+|Backend|
+:Receive request;
+:Validate JWT token;
+
+if (Is token valid?) then (no)
+  |Frontend|
+  :Redirect to login page;
+  stop
+endif
+
+:Fetch subscriptions from DB;
+
+if (Are subscriptions found?) then (no)
+  |Frontend|
+  :Display empty state message;
+  stop
+endif
+
+:Return subscription list;
+
+|Frontend|
+:Render subscription overview;
+:Display monthly and annual totals;
+
+|User|
+:View subscriptions and status;
+
+if (Cancel a subscription?) then (yes)
+  |User|
+  :Click cancel on subscription;
+
+  |Frontend|
+  :Send PATCH /subscriptions/{id};
+
+  |Backend|
+  :Update subscription status to CANCELLED;
+  :Save to database;
+  :Return updated subscription;
+
+  |Frontend|
+  :Update dashboard in real time;
+
+  |User|
+  :See updated status on dashboard;
+endif
+
+stop
+@enduml
