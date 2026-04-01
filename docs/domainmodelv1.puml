@@ -1,0 +1,47 @@
+
+@startuml
+Title domainmodel - one place subscription
+
+hide circle
+hide methods
+
+entity User {
+    +name
+    +email
+    + phone
+    + address
+    + amountOfSubscriptions
+}
+
+entity Subscription {
+    +startDate
+    +endDate
+    +status
+}
+
+entity BankAccount {
+    +accountNumber
+    +bankName
+}
+
+entity Transaction {
+    +amount
+    +date
+    +status
+}
+entity Category {
+    +name
+}
+
+Kunde "1" --> "1..*" Forespørgsel : "opretter"
+Forespørgsel "1" --> "1" Sælger : "sendes til"
+Sælger "1" --> "1" Pristilbud : "opretter og sender"
+Pristilbud "1" --> "1" Kunde : "sendes til"
+Kunde "1" --> "0..1" Betaling : "laver"
+Betaling "1" --> "1" Sælger : "modtages af"
+Sælger "1" --> "1" Stykliste : "laver"
+Sælger "1" --> "1" Faktura : "laver"
+Stykliste "1" --> "1" Lager : "modtages af"
+Faktura "1" --> "1" Kunde : "sendes til"
+
+@enduml
